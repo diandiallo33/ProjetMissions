@@ -1,0 +1,17 @@
+{# empty Twig template #}
+<p>Voici la liste de tous les frais!</p>
+    <section>
+        <table border="2" width="40%">
+            <tr><th>ID</th><th>Désignation</th><th>Montant</th><th>Pièce</th><th>Date</th><th>info Complémentaire</th><th>Validite</th></tr>
+        {% for f in Frais %}
+            <tr>
+                <td> {{f.id}}</td>
+                <td> {{f.designation}}</td>
+                <td> {{f.montant}}</td>
+                <td> {{f.piece}}</td>
+                <td> {{f.date | date('d-m-y')}}</td>
+                <td> {{f.infoCom}}</td>
+            </tr>
+        {% endfor %}
+        </table> 
+    </section> 

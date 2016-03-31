@@ -1,0 +1,43 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}
+Welcome!
+{% endblock %}
+{% block body %}
+        Formulaire!
+        {{form_start(f)}}
+            <table>
+                <tr>
+                    <td>{{form_label(f.designation)}}</td>
+                    <td>{{form_widget(f.designation)}}</td>
+                    <td>{{form_errors(f.designation)}}</td>
+                </tr>}
+                <tr>
+                    <td>{{form_label(f.montant)}}</td>
+                    <td>{{form_widget(f.montant)}}</td>
+                    <td>{{form_errors(f.montant)}}</td>
+                </tr>}
+                <tr>
+                    <td>{{form_label(f.piece)}}</td>
+                    <td>{{form_widget(f.piece)}}</td>
+                    <td>{{form_errors(f.piece)}}</td>
+                </tr>}
+                <tr>
+                    <td>{{form_label(f.date)}}</td>
+                    <td>{{form_widget(f.date)}}</td>
+                    <td>{{form_errors(f.date)}}</td>
+                </tr>}
+                <tr>
+                    <td>{{form_label(f.infoCom)}}</td>
+                    <td>{{form_widget(f.infoCom)}}</td>
+                    <td>{{form_errors(f.infoCom)}}</td>
+                </tr>}
+            </table>
+        {{form_end(f)}}
+        <br>
+        <br>
+        <br>
+        <br>
+
+    {% endblock %}
+    

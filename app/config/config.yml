@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@UtilisateursBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -10,7 +11,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -32,6 +33,19 @@ framework:
     http_method_override: true
     assets: ~
 
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: UtilisateursBundle\Entity\User
+    
+    registration:
+        form:
+            type: UtilisateursBundle\Form\Type\RegistrationType
+    
+    profile:
+        form:
+            type: UtilisateursBundle\Form\Type\ProfileType
+    
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"

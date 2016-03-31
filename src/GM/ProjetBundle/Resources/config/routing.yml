@@ -1,0 +1,14 @@
+gm_projet_homepage:
+    path:     /
+    defaults: { _controller: GMProjetBundle:Default:index }
+        
+        
+gm_projet_ajout:
+    path:    /AjoutFrais
+    defaults:
+        _controller: GMProjetBundle:Depense:ajoutfrais
+
+gm_projet_liste:
+    path:    /ListeFrais
+    defaults:
+        _controller: GMProjetBundle:Depense:listefrais

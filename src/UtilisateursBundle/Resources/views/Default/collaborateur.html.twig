@@ -1,0 +1,20 @@
+{% extends "::accueil.html.twig" %}
+
+{% block   body %}
+    {{ parent() }}
+    <h2> Espace Collaborateur </h2>
+ 
+<a href="#" id="profile"> My Profile</a> &nbsp;&nbsp;&nbsp;
+<a href="#" id="frais"> Frais</a>
+   
+<div id="divProfile">
+   
+    {{ render(controller('FOSUserBundle:Profile:edit'))}}
+    
+    <hr/>
+    {{ render(controller('FOSUserBundle:ChangePassword:changePassword'))}}
+</div>
+    
+{%endblock  body %}
+
+
