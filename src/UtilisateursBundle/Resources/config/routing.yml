@@ -27,3 +27,11 @@ utilisateurs_atos:
     path:     /atos-externe
     defaults: { _controller: UtilisateursBundle:Default:projet }
 
+utilisateurs_users:
+    path:     /users
+    defaults: { _controller: UtilisateursBundle:Default:users }
+    
+utilisateurs_enable_user:
+    path:     /enable
+    defaults: { _controller: UtilisateursBundle:Default:enableUser }
+    

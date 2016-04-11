@@ -46,7 +46,7 @@ class DepenseController extends Controller
 //*************************************************************AFFICHER FRAIS
         public function listefraisAction()
     {
-              $em= $this->getDoctrine()->getEntityManager();
+      $em= $this->getDoctrine()->getEntityManager();
       $lf=$em->getRepository('GMProjetBundle:Frais')->findAll();
 //      $missId=$em->getRepository('GMProjetBundle:Mission')->find('')
       return $this->render('GMProjetBundle:Depense:liste.html.twig', array('Frais' => $lf));   

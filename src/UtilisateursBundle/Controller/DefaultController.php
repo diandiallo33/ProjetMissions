@@ -84,10 +84,33 @@ class DefaultController extends Controller
         return $this->render('UtilisateursBundle:Default:projet.html.twig');
     }
     
-    public function profileAction()
+    public function usersAction()
     {
-
-        return $this->render('UtilisateursBundle:Default:profile.html.twig');
+         $em= $this->getDoctrine()->getEntityManager();
+         $users=$em->getRepository('UtilisateursBundle:User')->findAll();
+         //var_dump($users);
+        return $this->render('UtilisateursBundle:Default:users.html.twig',array('users' => $users));
+    }
+    
+    public function enableUserAction(Request $request)
+    {
+        $choix = $request->request->get('choix');
+        $id = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('UtilisateursBundle:User')->find($id);
+        if($choix === null){
+            $user->setEnabled(false);
+        }
+        else if($choix == 1){
+            $user->setEnabled(true);
+        }
+        else if($choix === ''){
+          $user->setEnabled(true); 
+        }
+        $em->persist($user);
+        $em->flush();
+        return $this->redirectToRoute('utilisateurs_admin');
+        
     }
     
     

@@ -3,12 +3,49 @@
 {% block   body %}
     {{ parent() }}
     <h2> Espace DG Atos </h2>
-    <a href="#" id="profile"> My Profile</a>
+    <a href="#" id="profile"> My Profile</a>&nbsp;&nbsp;&nbsp;
+    <a href="#" id="newProject"> Received Projects</a> &nbsp;&nbsp;&nbsp;
+    <a href="#" id="projectStatus"> Projects Status </a>  
    
     <div id="divProfile">
-
         {{ render(controller('FOSUserBundle:Profile:edit'))}}
-
+          <div class="results"> </div> 
+          <hr/>
+        {{ render(controller('FOSUserBundle:ChangePassword:changePassword'))}}
+        <span class="passwordResult"> </span>
+    </div>
+        
+    <div id="divNewProject">
+      Received Projects
+    </div>  
+    
+     <div id="divProjectStatus">
+       Project Status
     </div>
 
 {%endblock  body %}
+
+{% block javascripts %}
+    {{ parent() }}
+     
+      <script >
+        $(function(){
+              
+                     $( "#newProject" ).click(function() {
+
+                        $('#divNewProject').css({'display':'block'}); 
+                        $('#divProjectStatus').css({'display':'none'}); 
+                        $('#divProfile').css({'display':'none'});
+                     });
+                     
+                     $( "#projectStatus" ).click(function() {
+
+                        $('#divProjectStatus').css({'display':'block'}); 
+                        $('#divNewProject').css({'display':'none'}); 
+                        $('#divProfile').css({'display':'none'});
+                     });
+       
+                 
+         });
+      </script>
+{% endblock %}

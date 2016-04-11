@@ -3,5 +3,37 @@
 {% block   body %}
     {{ parent() }}
     <h2> Espace Entité Atos Porteur du Projet</h2>
-
+    <a href="#" id="newProject"> New Project</a> &nbsp;&nbsp;&nbsp;
+    <a href="#" id="projectStatus"> Projects Status </a>  &nbsp;&nbsp;&nbsp;
+    
+     <div id="divNewProject">
+       New Project
+    </div>  
+    
+     <div id="divProjectStatus">
+       Project Status
+    </div>  
 {%endblock  body %}
+
+{% block javascripts %}
+    {{ parent() }}
+     
+      <script >
+        $(function(){
+              
+                     $( "#newProject" ).click(function() {
+
+                        $('#divNewProject').css({'display':'block'}); 
+                        $('#divProjectStatus').css({'display':'none'}); 
+                     });
+                     
+                     $( "#projectStatus" ).click(function() {
+
+                        $('#divProjectStatus').css({'display':'block'}); 
+                        $('#divNewProject').css({'display':'none'}); 
+                     });
+       
+                 
+         });
+      </script>
+{% endblock %}

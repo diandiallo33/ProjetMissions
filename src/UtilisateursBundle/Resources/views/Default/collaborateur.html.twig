@@ -8,13 +8,30 @@
 <a href="#" id="frais"> Frais</a>
    
 <div id="divProfile">
-   
-    {{ render(controller('FOSUserBundle:Profile:edit'))}}
     
+    {{ render(controller('FOSUserBundle:Profile:edit'))}}
+     <div class="results"> </div> 
     <hr/>
     {{ render(controller('FOSUserBundle:ChangePassword:changePassword'))}}
+    <span class="passwordResult"> </span>
 </div>
     
 {%endblock  body %}
+
+{% block javascripts %}
+    {{ parent() }}
+     
+      <script >
+        $(function(){
+            
+                $( "#frais" ).click(function() {
+
+                        $('#divProfile').css({'display':'none'}); 
+
+                  });
+                                    
+         });
+      </script>
+{% endblock %}
 
 

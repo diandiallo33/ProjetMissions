@@ -31,18 +31,74 @@
             <script >
              $(function(){
 
-
-                     $( "#profile" ).click(function() {
+                    
+                    $( "#profile" ).click(function() {
 
                         $('#divProfile').css({'display':'block'}); 
-
+                        $('#divNewUser').css({'display':'none'});
+                        $('#divAutre').css({'display':'none'});
+                        $('#divNewProject').css({'display':'none'});
+                        $('#divProjectStatus').css({'display':'none'}); 
                      });
+                        
                      
-                     $( "#frais" ).click(function() {
+                   //************* Profile *****************  
+                    $( ".fos_user_profile_edit" ).submit(function(e) {
+                      e.preventDefault();
+                      //var donnees = $(this).serialize();
+                       var values = {};
+                      $('.fos_user_profile_edit').serializeArray().forEach(function (field) {
+                          values[field.name] = field.value;
+                      });
 
-                        $('#divProfile').css({'display':'none'}); 
+                            $.ajax({
+                            url: "{{ path('fos_user_profile_edit') }}",
+                            data: values,
+                            type: 'post'
+                            }).done(function (data) {
+                                $(".results").html("<h3>Successful.</h3>");
+                                /*setTimeout(function () {
+                                    window.location.reload(1);
+                                }, 2000);*/
+                            }).fail(function (data) {
+                                var newHTML = $.map(data.responseJSON.message, function (value) {
+                                    return ('<li>' + value + '</li>');
+                                });
+                                $(".results").html(newHTML);
+                            });
 
-                     });
+                    });
+                    
+                    //************* Password *****************  
+                    $( ".fos_user_change_password" ).submit(function(e) {
+
+                        e.preventDefault();
+                        //var donnees = $(this).serialize();
+                         var val1, val2,i=0; 
+                         var values = {};
+                        $('.fos_user_change_password').serializeArray().forEach(function (field) {
+                            values[field.name] = field.value;
+
+                              if (i===0) { val1=field.value; i++;}
+                               else if(i===1)  {val2=field.value; i++; }
+                        });
+
+                        if (val1===val2)
+                        {
+                            $.ajax({
+
+                              type: "POST",
+                              url: "{{ path('fos_user_change_password') }}",
+                              data: values,
+                              dataType: "text",
+                              success: function(result){
+                              $(".passwordResult").text("succes"); 
+                              }
+                           }); 
+                        }
+                        else {$(".passwordResult").text("Mot de passe different");}
+                       
+                    });
 
               });     
             
